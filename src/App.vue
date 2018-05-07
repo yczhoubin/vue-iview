@@ -7,6 +7,9 @@
   color: #2c3e50;
   margin-top: 60px;
 } */
+html,body,#app{
+  height: 100%;
+}
 </style>
 
 <template>
@@ -14,7 +17,8 @@
     <!-- <img src="./assets/logo.png">
     <router-view/> -->
     <!-- <Login></Login> -->
-    <Home></Home>
+    <!-- <Home style="height: 100%;"></Home> -->
+    <router-view style="height:100%"></router-view>
   </div>
 </template>
 
