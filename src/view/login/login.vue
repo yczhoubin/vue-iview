@@ -41,16 +41,16 @@ export default {
         password: ""
       },
       ruleInline: {
-        user: [{ required: true, message: "请填写用户名", trigger: "blur" }],
-        password: [
-          { required: true, message: "请填写密码", trigger: "blur" },
-          {
-            type: "string",
-            min: 6,
-            message: "密码长度不能小于6位",
-            trigger: "blur"
-          }
-        ]
+        // user: [{ required: true, message: "请填写用户名", trigger: "blur" }],
+        // password: [
+        //   { required: true, message: "请填写密码", trigger: "blur" },
+        //   {
+        //     type: "string",
+        //     min: 6,
+        //     message: "密码长度不能小于6位",
+        //     trigger: "blur"
+        //   }
+        // ]
       }
     };
   },
@@ -59,6 +59,7 @@ export default {
       this.$refs[name].validate(valid => {
         if (valid) {
           this.$Message.success("提交成功!");
+          this.$router.push('/home');
         } else {
           this.$Message.error("表单验证失败!");
         }

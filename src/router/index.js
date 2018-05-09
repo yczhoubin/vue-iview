@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import HelloWorld from '@/components/HelloWorld'
 import HomePage from '@/view/home-page.vue'
 
 Vue.use(Router)
@@ -10,7 +9,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/home'
+      redirect: '/login'
     },
     {
       path: '/home',
@@ -22,40 +21,13 @@ export default new Router({
         },
         {
           path: '/components',
-          component: resolve => require(['../view/components/index.vue'], resolve),
-          // children: [
-          //   {
-          //     path: '',
-          //     component: resolve => require(['../view/components/index.vue'], resolve)
-          //   },
-          //   {
-          //     path: 'inputUnit',
-          //     component: resolve => require(['../view/components/input/input-unit.vue'], resolve)
-          //   },
-          //   {
-          //     path: '/image-preview',
-          //     component: resolve => require(['../view/components/image-preview/image-preview.vue'], resolve)
-          //   }
-          // ]
+          component: resolve => require(['../view/components/index.vue'], resolve)
         }
       ]
+    },
+    {
+      path: '/login',
+      component: resolve => require(['../view/login/login.vue'], resolve)
     }
-    // {
-    //   path: '/home',
-    //   component: resolve => require(['../view/home-page.vue'], resolve)
-    // },
-    // {
-    //   path: '/components',
-    //   component: resolve => require(['../view/components/input/input-unit.vue'], resolve),
-    //   children: [{
-    //       path: 'inputUnit',
-    //       component: resolve => require(['../view/components/input/input-unit.vue'], resolve)
-    //     },
-    //     {
-    //       path: '/image-preview',
-    //       component: resolve => require(['../view/components/image-preview/image-preview.vue'], resolve)
-    //     }
-    //   ]
-    // }
   ]
 })
