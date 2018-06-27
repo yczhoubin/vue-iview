@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HomePage from '@/view/home-page.vue'
+// import HomePage from '@/view/home-page.vue'
 
 Vue.use(Router)
 
@@ -21,7 +21,7 @@ export default new Router({
         },
         {
           path: '/components',
-          component: resolve => require(['../view/components/index.vue'], resolve)
+          component: resolve => require(['../view/demo/index.vue'], resolve)
         }
       ]
     },

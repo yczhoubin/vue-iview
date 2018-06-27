@@ -41,7 +41,7 @@
 <script>
 import config from  './index-config.js'
 import HomePage from './home-page.vue'
-import ComponentFunction from './components/index.vue'
+import ComponentFunction from './demo/index.vue'
 
 export default {
   data() {
