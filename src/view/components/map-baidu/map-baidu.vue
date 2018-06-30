@@ -24,16 +24,18 @@
       <Input v-model="longitude" style="width:200px"></Input>
       <Input v-model="latitude" style="width:200px"></Input>
       <Button type="primary" @click="openLocation">打开定位</Button>
+      <Button type="primary" @click="editLocation">编辑定位</Button>
     </div>
-    <LocationModal v-model="showLocation"></LocationModal>
+    <LocationModal v-model="showLocation" :params='{}' :isCreate="true" @ok="pickupLocation"></LocationModal>
+    <LocationModal2 v-model="editModal" :params="params" :isCreate="false" @ok="pickupLocation"></LocationModal2>
     <div id="baiduMapPage" class="baidu-map-page"></div>
   </div>
-
 </template>
 <script>
 import MP from "./map-baidu.js";
 import BMapLib from "./GeoUtils.js";
 import LocationModal from "./MapModal.vue";
+import LocationModal2 from "./MapModal.vue";
 var self = this;
 export default {
   data() {
@@ -44,10 +46,14 @@ export default {
       latitude: "",
       pickupOpen: false,
       showLocation: false,
+      params: {},
+      isCreate: true,
+      editModal: false,
     };
   },
   components: {
     "LocationModal": LocationModal,
+    "LocationModal2": LocationModal2,
   },
   mounted() {
     MP().then(BMap => {
@@ -294,7 +300,23 @@ export default {
       });  
     },
     openLocation() {
+      this.params = {};
+      this.isCreate = true;
       this.showLocation = true;
+    },
+    editLocation() {
+      let point = {};
+      point.lng = this.longitude;
+      point.lat = this.latitude;
+      this.params = point;
+      // this.isCreate = false;
+      this.editModal = true;
+    },
+    pickupLocation(val) {
+      if(val) {
+        this.longitude = val.longitude;
+        this.latitude = val.latitude;
+      }
     }
   }
 };

@@ -66,7 +66,6 @@ export default {
   },
   watch: {
     model(value) {
-      //父组件可以通过v-model进行监听值
       this.currPoint = value;
       if (!value) {
         this.map.reset();
