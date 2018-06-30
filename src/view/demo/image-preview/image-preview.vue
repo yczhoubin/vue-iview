@@ -12,21 +12,62 @@
 </style>
 <template>
   <div>
-    <div class="images-thumbnail" v-for="item in images">
+    <!-- <div class="images-thumbnail" v-for="item in images">
       <img :src="item" class="image-thumbnail"></div>
-    </div>
+    </div> -->
+    <PictureView
+      :pictureList="pictureList"
+      :props="defaultProps"
+      @move="handleNext"
+    ></PictureView>
+    <button @click="changeToThumbnail">全部缩略图</button>
+    <button @click="changeToOriginal">全部原图</button>
   </div>
 </template>
 <script>
+
+import PictureView from '../../components/picture-preview/picture-preview.vue';
 export default {
   data() {
     return {
-      images: [
-        '/Users/zhoubin/work/front-end/vue-iview/src/view/image/3a5ce76ba75fad4552eacc7cf5d30c00.jpg',
-        '/Users/zhoubin/work/front-end/vue-iview/src/view/image/3de78160ecd86a268655d4463e79dc79.jpg',
-        '/Users/zhoubin/work/front-end/vue-iview/src/view/image/90242e65325fbd4b80e30f945a56b39f.jpg'
-      ]
+      pictureList: [
+       {
+         thumbnail: '/20180525091245.jpg?imageView2/5/w/200/h/200/q/75|imageslim',
+         original: '/20180525091245.jpg'
+       },
+       {
+         thumbnail: '/20180525091249.jpg?imageView2/5/w/200/h/200/q/75|imageslim',
+         original: '/20180525091249.jpg'
+       },
+       {
+         thumbnail: '/20180525091252.jpg?imageView2/5/w/200/h/200/q/75|imageslim',
+         original: '/20180525091252.jpg'
+       },
+       {
+         thumbnail: '/20180525091253.jpg?imageView2/5/w/200/h/200/q/75|imageslim',
+         original: '/20180525091253.jpg'
+       }
+     ],
+     defaultProps: {
+       originalKey: 'original',
+       thumbnailKey: 'thumbnail',
+       domain: 'http://p09vugqdu.bkt.clouddn.com'
+     }
     }
+  },
+  methods: {
+    handleNext(data) {
+      console.log(data);
+    },
+    changeToThumbnail() {
+      this.defaultProps.originalKey = 'thumbnail';
+    },
+    changeToOriginal() {
+      this.defaultProps.originalKey = 'original';
+    }
+  },
+  components: {
+    "PictureView": PictureView,
   }
 }
 </script>
