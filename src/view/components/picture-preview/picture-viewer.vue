@@ -28,7 +28,7 @@
       left: 0;
       top: 0;
       cursor: move;
-      opacity: 1;
+      opacity: 0;
       &.show {
         opacity: 1;
       }
@@ -109,7 +109,7 @@
     <div class="big-picture-preview" v-if="visible">
       <div class="picture-wrapper" :style="{'bottom':isMenu?'60px':'100px'}" ref="imgWrapper" @click="singleClick">
         <img :class="{'show':isShowPic}" :src="currentPicSrc" alt="" :style="{'transition': `${imgTransition}s`, 'transform': `rotate(${rotateVal}deg) scale(${scaleVal})`, 'left': `${left}px`, 'top': `${top}px`}" ref="img" @load="imageLoaded" @mousedown="touchStart" @mousemove="touchMove" @mouseup="touchEnd" @mousewheel="mousewheel" @click="doubleClick">
-        <!-- <div class="loading" v-show="!isShowPic"></div> -->
+        <div class="loading" v-show="!isShowPic"></div>
       </div>
       <div class="menu-wrapper" v-if="isMenu">
         <div class="item prev" :class="{'disabled':isFirst}" @click="moveIndex(-1)" v-if="isMove"></div>
