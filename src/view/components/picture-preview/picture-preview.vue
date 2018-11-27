@@ -53,6 +53,7 @@
         <div class="picture" :style="{background: `url(${item}) no-repeat center center / cover`}"></div>
         <div class="search-icon" :class="{'active': showIconIndex===index}"></div>
       </div>
+      <img id="viewerjs" :src="thumbnailList[0]"></img>
     </div>
     <PictureViewer v-model="ifShowPicturePreview" :index="currentPicIndex" :pictureList="originalList"></PictureViewer>
   </div>
@@ -60,6 +61,9 @@
 
 <script>
 import PictureViewer from "./picture-viewer.vue";
+import Viewer from 'viewerjs';
+import '../../../../node_modules/viewerjs/dist/viewer.min.css'
+
 export default {
   props: {
     // 图片
@@ -100,6 +104,7 @@ export default {
   },
   mounted() {
     this.pageInit();
+    var viewer = new Viewer(document.getElementById('viewerjs'));
     console.log(this.props);
   },
   watch: {
